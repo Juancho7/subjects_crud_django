@@ -1,0 +1,27 @@
+{% extends './layout.html' %}
+<!-- fi-start -->
+{% block title %}Edit Subject{% endblock %}
+<!-- fi -->
+{% block content %}
+<h1>Edit Subject {{course.name}}</h1>
+<form action="/edit_course/" method="POST">
+  {% csrf_token %}
+  <input
+    type="text"
+    name="txt_code"
+    minlength="6"
+    maxlength="6"
+    value="{{course.code}}"
+    readonly
+  />
+  <input
+    type="text"
+    name="txt_name"
+    maxlength="50"
+    value="{{course.name}}"
+    required
+  />
+  <input type="number" name="txt_credits" value="{{course.credits}}" required />
+  <input type="submit" value="Edit" />
+</form>
+{% endblock %}
